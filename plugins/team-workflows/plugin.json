@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "team-workflows",
+  "version": "0.1.0",
+  "description": "Lightweight specification, work-session, review, and reflection workflows for team development.",
+  "author": {
+    "name": "AtsushiHosaka"
+  },
+  "repository": "https://github.com/AtsushiHosaka/team-ai-connectors",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Team Workflows",
+        "shortDescription": "Build and reflect together.",
+        "longDescription": "Four shared workflows for small, evidence-backed development tasks: lightweight specifications, work sessions, review preparation, and reflection.",
+        "developerName": "AtsushiHosaka",
+        "category": "Developer Tools"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "atlassian",
+  "version": "0.1.0",
+  "description": "Connect your Atlassian Cloud account to the official hosted MCP server for Jira, Confluence, and other supported products.",
+  "author": {
+    "name": "AtsushiHosaka"
+  },
+  "repository": "https://github.com/AtsushiHosaka/team-ai-connectors",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Atlassian Connection",
+        "shortDescription": "Connect Atlassian Cloud.",
+        "longDescription": "Optional team packaging for Atlassian's official MCP server. Install only if you already use a supported Atlassian Cloud product, then authorize your own account.",
+        "developerName": "AtsushiHosaka",
+        "category": "Developer Tools",
+        "capabilities": ["Read", "Write"]
+      }
+    }
+  }
+}

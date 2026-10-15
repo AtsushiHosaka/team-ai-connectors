@@ -1,0 +1,9 @@
+{
+  "name": "team-workflows",
+  "version": "0.1.0",
+  "description": "Lightweight specification, work-session, review, and reflection workflows for team development.",
+  "author": {
+    "name": "AtsushiHosaka"
+  },
+  "repository": "https://github.com/AtsushiHosaka/team-ai-connectors"
+}

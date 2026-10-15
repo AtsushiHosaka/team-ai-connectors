@@ -1,0 +1,35 @@
+{
+  "verified_on": "2026-10-15",
+  "connectors": {
+    "notion": {
+      "name": "Notion",
+      "mode": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "auth": "oauth",
+      "docs": "https://developers.notion.com/guides/mcp/get-started-with-mcp"
+    },
+    "github": {
+      "name": "GitHub",
+      "mode": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "auth": "bearer-env",
+      "token_env": "GITHUB_MCP_TOKEN",
+      "headers": {"X-MCP-Readonly": "true"},
+      "docs": "https://github.com/github/github-mcp-server/blob/main/docs/installation-guides/install-codex.md"
+    },
+    "atlassian": {
+      "name": "Atlassian Jira and Confluence",
+      "mode": "remote",
+      "url": "https://mcp.atlassian.com/v2/mcp",
+      "auth": "oauth",
+      "docs": "https://atlassian.github.io/atlassian-mcp-server/"
+    },
+    "slack": {
+      "name": "Slack",
+      "mode": "guided",
+      "auth": "native-connector",
+      "reason": "Use the official Slack connector in your AI client. Generic Slack MCP access requires a registered Slack app; see docs/connectors.md.",
+      "docs": "https://docs.slack.dev/ai/slack-mcp-server/"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "notion",
+  "version": "0.1.0",
+  "description": "Connect your own Notion workspace through Notion's official hosted OAuth MCP server.",
+  "author": {
+    "name": "AtsushiHosaka"
+  },
+  "repository": "https://github.com/AtsushiHosaka/team-ai-connectors",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Notion Connection",
+        "shortDescription": "Connect your Notion account.",
+        "longDescription": "Optional team packaging for Notion's official hosted MCP server. Each member authorizes their own account; this repository contains no shared credentials.",
+        "developerName": "AtsushiHosaka",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"]
+      }
+    }
+  }
+}

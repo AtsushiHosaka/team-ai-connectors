@@ -1,0 +1,26 @@
+{
+  "name": "team-ai-connectors",
+  "owner": {
+    "name": "AtsushiHosaka"
+  },
+  "metadata": {
+    "description": "Shared development workflows and optional official MCP connections for this team."
+  },
+  "plugins": [
+    {
+      "name": "team-workflows",
+      "description": "Lightweight specification, work-session, review, and reflection workflows.",
+      "source": "./plugins/team-workflows"
+    },
+    {
+      "name": "notion",
+      "description": "Optional connection to your own Notion account using the official hosted MCP server.",
+      "source": "./plugins/notion"
+    },
+    {
+      "name": "atlassian",
+      "description": "Optional connection to your Atlassian Cloud site using the official hosted MCP server.",
+      "source": "./plugins/atlassian"
+    }
+  ]
+}
