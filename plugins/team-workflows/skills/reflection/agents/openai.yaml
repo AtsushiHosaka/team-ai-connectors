@@ -1,4 +1,4 @@
 interface:
   display_name: "ふりかえり"
-  short_description: "実際の作業を根拠に判断を振り返り、次回試す具体的な行動を一つ提案します"
-  default_prompt: "$reflection を使って、今日の開発を振り返り、次回試すことを一つ考えてください。"
+  short_description: "作業を振り返り、設定したSlackへの共有と希望するGitHubへのpushまで進めます"
+  default_prompt: "$reflection を使って今日の開発を振り返り、次回試すことを一つ考えてください。個人設定と今回の希望に従ってSlackへの共有とGitHubへのpushを進めてください。"

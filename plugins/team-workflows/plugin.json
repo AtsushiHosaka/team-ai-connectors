@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "team-workflows",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "仕様を詰める・実装・検証・実利用確認・ふりかえりを日本語で進めるチーム開発スキル。",
   "author": {
     "name": "AtsushiHosaka"
