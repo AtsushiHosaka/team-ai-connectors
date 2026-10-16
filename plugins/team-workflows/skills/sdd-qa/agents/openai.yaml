@@ -1,0 +1,4 @@
+interface:
+  display_name: "品質確認"
+  short_description: "要件と実装を照合し、テスト・画面操作・保存結果を根拠に完成度を確かめます"
+  default_prompt: "$sdd-qa を使って、仕様の受け入れ条件ごとに実装と動作を確認してください。"

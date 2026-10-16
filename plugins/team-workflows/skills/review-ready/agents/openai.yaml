@@ -1,0 +1,4 @@
+interface:
+  display_name: "レビュー準備"
+  short_description: "実際の差分と検証結果を調べ、変更内容が伝わるPR本文と引き継ぎを用意します"
+  default_prompt: "$review-ready を使って、今回の変更を説明するPR本文と検証結果をまとめてください。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "作業報告"
+  short_description: "開発開始・進捗・終了の短い報告を作り、依頼された場合は指定のSlackへ送ります"
+  default_prompt: "$work-session を使って、開発開始の目的と最初の作業を短い報告にしてください。"

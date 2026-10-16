@@ -1,0 +1,4 @@
+interface:
+  display_name: "ふりかえり"
+  short_description: "実際の作業を根拠に判断を振り返り、次回試す具体的な行動を一つ提案します"
+  default_prompt: "$reflection を使って、今日の開発を振り返り、次回試すことを一つ考えてください。"

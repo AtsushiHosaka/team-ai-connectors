@@ -1,36 +1,36 @@
 ---
 name: review-ready
-description: Prepare an evidence-backed pull request description and review handoff from an actual development diff. Use when a change is ready for review or the user asks to prepare a PR.
+description: 実際の差分と検証結果を調べ、PR本文とレビューの引き継ぎを用意する。「レビュー準備」「PRの説明を書いて」「変更をレビューに出したい」と依頼されたときに使う。PR作成やプッシュは、その操作も依頼された場合に行う。
 ---
 
-# Review Ready
+# レビュー準備
 
-Use the user's language. Help a reviewer understand the final change without requiring the conversation history.
+レビューする人が会話の履歴を読まなくても、変更と検証結果を判断できるようにします。日本語で書き、ユーザーが別の言語を指定した場合はそれに従います。
 
-## Inspect the change
+## 変更を読む
 
-Read the project's contribution instructions and PR template. Check the working tree, current branch, intended base, and complete relevant diff. Do not include unrelated work or change Git identity.
+プロジェクトの開発ルールとPRテンプレートを読みます。作業中の変更、現在のブランチ、取り込み先、対象の差分全体を確認します。無関係な変更を混ぜず、Gitのユーザー情報を変更しません。
 
-Explain the concrete problem and resulting behavior. For a behavior change, a short before/after example is often clearer than a list of modified files.
+解決する問題と変更後の動作を説明します。動作が変わる場合は、変更前後の具体例を短く示します。
 
-Check for contradictions between the task and implementation, accidental removals, exposed credentials, and missing error handling relevant to the change. Fix issues only within the user's authorized scope; report unresolved issues plainly.
+依頼と実装の食い違い、意図しない機能削除、秘密情報、変更箇所に関係するエラー処理の不足を確認します。修正は依頼された範囲で行い、未解決の問題は明示します。
 
-## Establish evidence
+## 検証の根拠をそろえる
 
-Use checks appropriate to the change. Record the actual command or observable result and any meaningful limitation. A passing build does not establish authenticated behavior, successful deployment, or external-provider success.
+変更に合う確認を行い、実行したコマンドや観察結果、意味のある制約を記録します。ビルド成功だけで、認証後の動作、デプロイ、外部サービスの成功を証明したことにしません。
 
-For visible UI changes, include screenshots when requested or useful and available. Confirm they show the current implementation. Avoid adding tests that merely repeat the implementation.
+画面の変更では、求められた場合や判断に役立つ場合に、現在の実装のスクリーンショットを用意します。実装内容をそのまま写しただけのテストは増やしません。
 
-## Prepare the handoff
+## 引き継ぎを書く
 
-Follow the repository template; otherwise draft a concise description covering:
+プロジェクトのテンプレートを優先します。なければ、次の内容で簡潔なPR本文を作ります。
 
-- The problem and resulting behavior.
-- Material implementation choices or tradeoffs, if needed for review.
-- Verification performed and any remaining gap.
+- 解決する問題と、変更後の動作。
+- 判断に必要な実装上の選択と、その理由。
+- 実行した検証と、残っている未確認事項。
 
-Do not manufacture issue links, test results, deployment claims, or reviewer approval. Identify draft or incomplete work explicitly.
+存在しないIssueのリンクや、実際に得ていないテスト結果・公開状況・レビュー承認を記載しません。途中の変更や下書きは、その状態を明記します。
 
-Preparing a PR does not authorize pushing, creating, merging, or messaging reviewers. Perform those actions only when requested or already authorized. When creation is authorized, verify the target repository and base, create the PR, and return its URL; use any host-required attachment tool.
+PR本文の準備だけでは、プッシュ、PR作成、マージ、レビュー依頼の送信を始めません。依頼済みであれば、対象リポジトリと取り込み先を確かめ、その範囲で実行します。作成したPRはURLを返し、実行環境に必要な添付機能があれば使用します。
 
-End with the reviewable artifact and verification result. Surface an unresolved blocker instead of marking the work ready.
+最後に、レビューに渡せる成果物と検証結果を示します。問題が残っていれば、準備完了にせず、その問題を伝えます。

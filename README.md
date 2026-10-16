@@ -1,69 +1,78 @@
 # Team AI Connectors
 
-A private personal repository of shared AI skills and connector configurations for mentors and students. Members use their own AI and service accounts; no GitHub organization is required.
+メンターと生徒が、AIと一緒にチーム開発を進めるためのスキルと接続設定をまとめたリポジトリです。仕様を詰め、実装し、テストや実際の操作で確かめ、次の改善につなげます。
 
-**Start here: [Member quickstart](docs/quickstart.md).** The owner invites each member to [AtsushiHosaka/team-ai-connectors](https://github.com/AtsushiHosaka/team-ai-connectors), and members install only the tools they use.
+初めて使う人は、[日本語の導入ガイド](docs/quickstart.md)から始めてください。GitHubアカウントの作成、招待の受け取り、使うAIの選び方、導入できたかの確認を順に説明しています。
 
-## What is included
+## 最初に進める順番
 
-| Component | Purpose |
+1. 自分のGitHubアカウントを作ります。
+2. メンターにユーザー名を伝え、この非公開リポジトリへの招待を承認します。
+3. 導入ガイドから、自分が使うAIの手順を1つ選びます。
+4. 開発用のAIにチームスキルを入れ、日本語で「初期設定をして」と頼みます。
+5. 仕様相談やふりかえりを試し、必要なサービスに接続します。
+
+普段は「作りたいものの仕様を詰めたい」「この仕様で実装して」「今日の作業をふりかえって」のように、日本語で依頼できます。英語の名前は、設定や明示的な呼び出しに使う識別名です。
+
+## 使えるスキル
+
+| 日本語で頼むこと | スキル名 | 行うこと |
+| --- | --- | --- |
+| 初期設定をして | `setup` | 今の環境を確認し、必要なスキルや接続を導入して動作を確かめる |
+| 仕様を詰めたい | `sdd-plan` | 具体的な質問で未決定事項を整理し、要求・設計・実装タスクをまとめる |
+| この仕様で実装して | `sdd-implement` | 合意した範囲を実装し、完成条件に対応するテストや動作確認を行う |
+| 仕様どおりか検証して | `sdd-qa` | 要求と実装・テスト・実行結果を対応させ、品質を確認する |
+| 初めて使う人として試して | `sdd-dogfooding` | 実際の利用手順をたどり、バグや分かりにくい操作を記録する |
+| 今日の作業をふりかえって | `reflection` | 起きたことと自分の判断を整理し、次に試すことを決める |
+| レビューに出す準備をして | `review-ready` | 変更理由、実行した確認、未確認事項をPRの説明にまとめる |
+| 作業の状況を共有したい | `work-session` | 開始・進捗・終了の報告を作り、依頼された場合はSlackへ送る |
+
+仕様を決めてから実装し、検証結果に応じて必要な工程へ戻ります。スキルを使うだけで外部への公開や通知が行われることはありません。各工程では、実行できた確認と未確認の項目を分けて報告します。
+
+### 日本語のコマンドで呼び出す
+
+Claude Codeでは、日本語のコマンドも使えます。
+
+```text
+/team-workflows:仕様相談
+/team-workflows:実装
+/team-workflows:検証
+/team-workflows:使って確認
+/team-workflows:ふりかえり
+```
+
+先頭の`team-workflows:`は、このチームのプラグインを示します。`/ふりかえり`という省略形がすべてのAIで使えるわけではありません。Codexでは、日本語の表示名からスキルを選ぶか、普通の文章で依頼します。詳しい呼び方は[導入ガイド](docs/quickstart.md)にあります。
+
+## 初期設定からnatural-japaneseを入れる
+
+チームスキルの導入後、AIに次のように頼みます。
+
+```text
+初期設定をしてください。使っているAIの環境を確認して、
+natural-japaneseも導入し、日本語の文章を見直せるか確かめてください。
+```
+
+`natural-japanese`は、日本語の文章を読みやすく書いたり直したりする、[coji/natural-japanese](https://github.com/coji/natural-japanese)のスキルです。チームのカタログは、確認したコミットを固定して参照しています。`setup`は既に入っている設定を確認し、不足する導入と動作確認を進めます。
+
+## 外部サービスにつなぐ
+
+スキルは「AIの作業の進め方」、コネクタは「AIと外部サービスをつなぐ機能」です。リポジトリへの招待を受けても、SlackやNotionへのアクセス権が自動で追加されることはありません。各自のアカウントでログインします。
+
+| つなぐサービス | このリポジトリで用意しているもの |
 | --- | --- |
-| `team-workflows` plugin | Four portable skills for everyday development |
-| `sdd-lite` | Define a small task with observable acceptance criteria |
-| `work-session` | Prepare session updates and send requested Slack notifications |
-| `review-ready` | Prepare a PR handoff backed by actual checks |
-| `reflection` | Reflect on evidence and choose one next experiment |
-| Optional `notion` and `atlassian` plugins | Connect documentation and issue tracking through official MCP services |
-| Connector exporter | Generate configuration snippets for Codex, Claude Code, and VS Code |
-| Slack notification helper | Preview or send a short update through a configured incoming webhook |
+| Slack | AIクライアントの公式接続の案内と、作業通知用のスクリプト |
+| GitHub | 必要なリポジトリを読むためのMCP設定の生成 |
+| Notion | 公式MCPサーバーにつなぐ追加プラグインと設定生成 |
+| Jira・Confluence | Atlassian Cloudの公式MCPサーバーにつなぐ追加プラグインと設定生成 |
 
-Skills are reusable instructions. Connectors let an AI client access another service after authentication. Installing this repository does not grant access to anyone else's Slack, Notion, or GitHub account.
+まずは自分が使うサービスだけ設定します。接続の手順は[追加設定ガイド](docs/advanced-setup.md)、詳しい仕様と配布元は[接続と認証の資料（英語）](docs/connectors.md)を参照してください。
 
-## Install the workflow plugin
+## 資料とダウンロード
 
-Accept the private repository invitation first. With [GitHub CLI](https://cli.github.com/) installed:
+- [初めて使う人向けの導入ガイド](docs/quickstart.md)
+- [接続・通知・更新の追加設定ガイド](docs/advanced-setup.md)
+- [スキルのZIPダウンロード](https://github.com/AtsushiHosaka/team-ai-connectors/releases/latest)
 
-```sh
-gh auth login
-gh auth setup-git
-gh repo clone AtsushiHosaka/team-ai-connectors
-cd team-ai-connectors
-```
+ブラウザー版のChatGPTと、開発用のCodex・Claude Codeでは、使える導入方法が異なります。ブラウザー版に、このリポジトリのCLIコマンドを入力する必要はありません。自分に合う手順を導入ガイドで選んでください。
 
-**Codex:** register this checkout, then launch Codex:
-
-```sh
-codex plugin marketplace add .
-codex
-```
-
-Enter `/plugins`, choose the `team-ai-connectors` marketplace, and install `team-workflows`. Start a new session before using its skills. See the [official Codex plugin guide](https://learn.chatgpt.com/docs/plugins).
-
-**Claude Code:** the [quickstart](docs/quickstart.md#optional-claude-code) gives the equivalent installation commands and eligibility note.
-
-**ChatGPT on the web:** use native service plugins for Slack and other supported tools. This repository's Git marketplace installation instructions target local development clients; they do not promise arbitrary private-repository installation in ChatGPT web. See [supported plugin surfaces](https://learn.chatgpt.com/docs/plugins).
-
-## Connect services
-
-Start with Slack's native connection in the AI client, then add GitHub or documentation tools when needed. Each member completes their own sign-in and grants only the access they intend to use.
-
-```sh
-python3 scripts/configure.py list
-python3 scripts/configure.py export --client codex --connectors notion github
-```
-
-The exporter prints a configuration snippet. Use `--client claude-code` or `--client vscode` for those clients. Add `atlassian` to the connector list if needed. `--output PATH` creates a new snippet file and rejects an existing file; **merge the snippet into your existing client configuration manually**.
-
-GitHub snippets reference `GITHUB_MCP_TOKEN` and request read-only tools with `X-MCP-Readonly: true`. Set and export the token before launching the client. An `.env` file is not loaded automatically. OAuth services still require sign-in after configuration. See [connection details and provider references](docs/connectors.md).
-
-The helper scripts and tests use Python 3.11 or later and need no additional Python packages. To run the checks locally: `python3 -m unittest discover -s tests -v`.
-
-## Try one real task
-
-Ask your AI client to use `sdd-lite` to define a small change. Implement it, use `review-ready` to explain the result and checks, then use `reflection` to choose one improvement for next time.
-
-For a Slack update, explicitly ask for a notification and name its destination. The workflow does not post merely because a skill was loaded or an editor was opened. The [quickstart](docs/quickstart.md#send-an-optional-slack-update) also explains the webhook helper.
-
-## Validation boundary
-
-Configuration generation, skill packaging, and local checks can be verified without signing in to services. Actual Slack delivery, private GitHub access through MCP, and Notion/Atlassian OAuth must be checked with each member's accounts. This repository does not bundle credentials or preconfigured student records.
+ローカルのスクリプトとテストにはPython 3.11以上を使います。設定生成、ZIP作成、通知処理のテストと、本人のアカウントでのサービス接続は別々に確認します。認証情報や生徒の個人記録は同梱していません。

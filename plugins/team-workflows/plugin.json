@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "team-workflows",
-  "version": "0.1.0",
-  "description": "Lightweight specification, work-session, review, and reflection workflows for team development.",
+  "version": "0.2.0",
+  "description": "仕様を詰める・実装・検証・実利用確認・ふりかえりを日本語で進めるチーム開発スキル。",
   "author": {
     "name": "AtsushiHosaka"
   },
@@ -10,9 +10,9 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "Team Workflows",
-        "shortDescription": "Build and reflect together.",
-        "longDescription": "Four shared workflows for small, evidence-backed development tasks: lightweight specifications, work sessions, review preparation, and reflection.",
+        "displayName": "チーム開発",
+        "shortDescription": "仕様相談から実装・検証・実利用確認までを日本語で進める",
+        "longDescription": "要求・設計・タスクの整理、実装、根拠に基づく品質確認、実際の利用とふりかえり。初期設定から必要な文章スキルも導入できます。",
         "developerName": "AtsushiHosaka",
         "category": "Developer Tools"
       }

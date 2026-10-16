@@ -1,38 +1,38 @@
 ---
 name: reflection
-description: Turn a development session into a concise evidence-based reflection with one concrete next experiment. Use for personal or team retrospectives, including AI-assisted work.
+description: 開発の記録や成果を根拠に振り返り、次回試す具体的な行動を一つ決める。「ふりかえり」「振り返りをしたい」「今日の開発を整理して」「チームで改善点を考えたい」と依頼されたときに使う。AIを使った作業の振り返りにも対応する。
 ---
 
-# Reflection
+# ふりかえり
 
-Use the user's language. Focus on improving the next session, with observations tied to actual work.
+次の開発を改善するために、起きたことと判断を振り返ります。日本語で対話し、ユーザーが別の言語を指定した場合はそれに従います。
 
-## Gather evidence
+## 根拠を集める
 
-Use the user's account, relevant task notes, code changes, review feedback, and checks available within the authorized scope. Ask for the session goal or outcome if missing. Do not retrieve unrelated member histories.
+ユーザーの説明、今回のタスク、変更したコード、レビュー、テスト結果を、許可された範囲で読みます。作業の目的や結果が分からなければ、その点を聞きます。関係のないメンバーの履歴は調べません。
 
-Separate:
+次の3つを分けます。
 
-- **Facts:** observed actions and results, with a short source or artifact link when available.
-- **Interpretations:** plausible explanations, marked as uncertain.
-- **Unknowns:** evidence needed before drawing a conclusion.
+- 事実。実際に行った操作や得られた結果を、分かる範囲で成果物や記録に結び付けます。
+- 解釈。うまくいった理由や難しかった理由の候補を、不確かさが分かる形で示します。
+- 未確認事項。結論を出す前に必要な情報を残します。
 
-Do not equate prompt count, AI usage time, or generated code volume with skill. Do not infer a member's ability from a single session or reuse another person's assessment.
+プロンプトの回数、AIを使った時間、生成したコード量を、そのまま能力の指標にしません。一度の作業から本人の能力全体を決めたり、別の人の評価を流用したりしません。
 
-## Reflect on decisions
+## 判断を振り返る
 
-Choose the questions that fit the session:
+今回の作業に合う質問を選びます。
 
-- What outcome was intended, and what actually happened?
-- Which decision helped or slowed progress, and what evidence supports that?
-- What was delegated to AI, and what did the person verify or revise?
-- What feedback, review, or teammate contribution changed the work?
-- What uncertainty remains about the result?
+- 何を目指し、実際にはどこまでできたか。
+- 進みやすくなった判断、進みにくくなった判断は何か。その根拠はあるか。
+- AIに何を任せ、本人は何を確認・修正したか。
+- 仲間の助言やレビューで、どの判断が変わったか。
+- 完成したものについて、何がまだ分からないか。
 
-For formal evaluation, use criteria explicitly supplied by the user and connect each observation to evidence. Mark missing evidence as unassessed; do not invent scores or label the person.
+正式な評価を依頼された場合は、指定された基準と観察事実を対応させます。根拠がなければ未評価とし、点数や人物像を作りません。
 
-## Choose one next experiment
+## 次回の行動を一つ決める
 
-Suggest one small change for the next session: a specific action, an observable success signal, and when to review it. Present it as a proposal unless the user has chosen it.
+次回試す小さな変更を一つ提案します。「いつ何をするか」「改善したと判断できる結果」「いつ見直すか」を具体化します。ユーザーが選ぶまでは提案として扱います。
 
-Return a compact reflection with the result, one useful lesson, and the next experiment. Save or share it only in the location and audience the user requested; a retrospective request alone does not authorize a Slack post.
+最後に、作業の結果、役に立つ学び、次回試すことを短くまとめます。保存や共有は指定された場所と相手に限ります。振り返りの依頼だけでSlackへ投稿しません。

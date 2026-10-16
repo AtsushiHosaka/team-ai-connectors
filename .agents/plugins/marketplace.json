@@ -1,7 +1,7 @@
 {
   "name": "team-ai-connectors",
   "interface": {
-    "displayName": "Team AI Connectors"
+    "displayName": "チームのAIスキルと接続"
   },
   "plugins": [
     {
@@ -39,6 +39,19 @@
         "authentication": "ON_USE"
       },
       "category": "Developer Tools"
+    },
+    {
+      "name": "natural-japanese",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/coji/natural-japanese.git",
+        "sha": "03bc944a0c4a9f0b2a66eab065b30de5c529bf08"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
     }
   ]
 }

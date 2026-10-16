@@ -1,0 +1,4 @@
+interface:
+  display_name: "使って確かめる"
+  short_description: "初めて使う人の視点で製品を操作し、不具合や使いづらさを証拠付きで報告します"
+  default_prompt: "$sdd-dogfooding を使って、初めて使う人として製品を試し、問題を報告してください。"

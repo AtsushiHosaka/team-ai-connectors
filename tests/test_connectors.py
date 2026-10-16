@@ -3,6 +3,7 @@ import importlib.util
 import io
 import json
 import os
+import re
 from pathlib import Path
 import tempfile
 import tomllib
@@ -63,13 +64,40 @@ class ConfigurationTests(unittest.TestCase):
     def test_packages_are_uploadable_and_cannot_replace_existing_packages(self):
         with tempfile.TemporaryDirectory() as directory:
             archives = packages.build(directory)
-            self.assertEqual(len(archives), 4)
+            self.assertEqual({p.stem for p in archives}, {
+                "setup", "sdd-plan", "sdd-implement", "sdd-qa", "sdd-dogfooding",
+                "reflection", "review-ready", "work-session",
+            })
             for path in archives:
                 with zipfile.ZipFile(path) as archive:
                     self.assertIn(f"{path.stem}/SKILL.md", archive.namelist())
                     self.assertFalse(any(name.startswith("/") or ".." in Path(name).parts for name in archive.namelist()))
+                    for name in archive.namelist():
+                        self.assertEqual(archive.read(name), (packages.SKILLS / name).read_bytes())
             with self.assertRaises(FileExistsError):
                 packages.build(directory)
+
+    def test_japanese_commands_load_existing_skills_and_forward_arguments(self):
+        expected = {"初期設定": "setup", "仕様相談": "sdd-plan", "実装": "sdd-implement",
+                    "検証": "sdd-qa", "使って確認": "sdd-dogfooding", "ふりかえり": "reflection",
+                    "レビュー準備": "review-ready", "進捗共有": "work-session"}
+        commands = ROOT / "plugins" / "team-workflows" / "commands"
+        self.assertEqual({p.stem for p in commands.glob("*.md")}, set(expected))
+        for name, skill in expected.items():
+            content = (commands / f"{name}.md").read_text(encoding="utf-8")
+            self.assertIn("${CLAUDE_PLUGIN_ROOT}/skills/" + skill + "/SKILL.md", content)
+            self.assertIn("$ARGUMENTS", content)
+            self.assertTrue((packages.SKILLS / skill / "SKILL.md").is_file())
+
+    def test_natural_japanese_uses_the_same_pinned_upstream_in_both_catalogs(self):
+        codex = json.loads((ROOT / ".agents/plugins/marketplace.json").read_text())
+        claude = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text())
+        sources = [next(p["source"] for p in data["plugins"] if p["name"] == "natural-japanese")
+                   for data in (codex, claude)]
+        self.assertEqual(sources[0]["url"], "https://github.com/coji/natural-japanese.git")
+        self.assertEqual(sources[1]["repo"], "coji/natural-japanese")
+        self.assertEqual(sources[0]["sha"], sources[1]["sha"])
+        self.assertIsNotNone(re.fullmatch(r"[0-9a-f]{40}", sources[0]["sha"]))
 
 
 class SlackTests(unittest.TestCase):

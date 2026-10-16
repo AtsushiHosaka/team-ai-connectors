@@ -4,23 +4,33 @@
     "name": "AtsushiHosaka"
   },
   "metadata": {
-    "description": "Shared development workflows and optional official MCP connections for this team."
+    "description": "日本語で使うチーム開発スキルと、必要に応じて導入するサービス接続。"
   },
   "plugins": [
     {
       "name": "team-workflows",
-      "description": "Lightweight specification, work-session, review, and reflection workflows.",
+      "description": "初期設定、仕様相談、実装、検証、実利用確認、ふりかえりを日本語で進める。",
       "source": "./plugins/team-workflows"
     },
     {
       "name": "notion",
-      "description": "Optional connection to your own Notion account using the official hosted MCP server.",
+      "description": "自分のNotionアカウントを公式MCPサーバーにつなぐ追加設定。",
       "source": "./plugins/notion"
     },
     {
       "name": "atlassian",
-      "description": "Optional connection to your Atlassian Cloud site using the official hosted MCP server.",
+      "description": "利用中のAtlassian Cloudを公式MCPサーバーにつなぐ追加設定。",
       "source": "./plugins/atlassian"
+    },
+    {
+      "name": "natural-japanese",
+      "source": {
+        "source": "github",
+        "repo": "coji/natural-japanese",
+        "ref": "main",
+        "sha": "03bc944a0c4a9f0b2a66eab065b30de5c529bf08"
+      },
+      "description": "日本語の文章作成・推敲に使う配布元のスキル。初期設定から必要に応じて導入。"
     }
   ]
 }

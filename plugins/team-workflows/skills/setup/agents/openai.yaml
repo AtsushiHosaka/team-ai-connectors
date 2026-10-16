@@ -1,0 +1,4 @@
+interface:
+  display_name: "初期設定"
+  short_description: "使うAI環境を確認し、文章スキルと必要な接続を導入して確かめる"
+  default_prompt: "$setup を使って初期設定を進め、natural-japaneseも使えるようにしてください。"

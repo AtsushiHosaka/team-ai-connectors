@@ -1,0 +1,4 @@
+interface:
+  display_name: "計画・仕様を詰める"
+  short_description: "具体的な質問で仕様を詰め、要件・設計・実装タスクと検証方法をそろえます"
+  default_prompt: "$sdd-plan を使って、作りたい機能を質問で掘り下げ、要件・設計・タスクをまとめてください。"

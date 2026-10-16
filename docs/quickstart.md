@@ -1,14 +1,97 @@
-# Member quickstart
+# 初めて使う人の導入ガイド
 
-Use your own accounts. Begin with the workflow plugin and Slack; add other services when a task needs them.
+自分のGitHubアカウントで教材を開き、使うAIに必要なスキルや接続を入れる手順です。使うAIのコースを1つ選んで進めます。既に使えるアカウントや、取得済みのフォルダーはそのまま使ってください。
 
-## 1. Get access to the repository
+## 1. GitHubアカウントを作る
 
-**Owner:** open [the repository](https://github.com/AtsushiHosaka/team-ai-connectors), choose **Settings → Collaborators → Add people**, and invite the member's GitHub username. This is a private repository under a personal account.
+GitHubは、プログラムや教材を共有し、変更の履歴を残すサービスです。教材のまとまりを「リポジトリ」と呼びます。
 
-**Member:** create a [GitHub account](https://github.com/signup) if needed, then accept the invitation from GitHub or its email notification. Confirm that you can open the repository while signed in.
+1. [GitHubの登録画面](https://github.com/signup)を開きます。
+2. 自分が確認できるメールアドレスと、ユーザー名を使って登録します。
+3. GitHubから届くメールの案内に従い、メールアドレスを確認します。
+4. メンターに自分のユーザー名を伝えます。パスワードを伝える必要はありません。
 
-Install [GitHub CLI](https://cli.github.com/) if it is not available. In your terminal:
+既にGitHubアカウントがある人は、新しく作らず、そのユーザー名を伝えてください。
+
+GitHubは13歳以上などの[利用条件](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#3-account-requirements)があります。ChatGPTにも年齢条件があり、18歳未満の利用には保護者の許可が必要です。利用するサービスの条件を、メンター・保護者と確認してから進めてください。[ChatGPTの年齢条件](https://help.openai.com/en/articles/8313401-is-chatgpt-safe-for-all-ages)
+
+## 2. メンターからの招待を承認する
+
+この教材は非公開です。アカウントを作った後、メンターから招待してもらいます。
+
+1. GitHubの通知やメールに届いた招待を開きます。
+2. 自分のアカウントでログインし、`Accept invitation`などの承認ボタンを押します。
+3. [team-ai-connectors](https://github.com/AtsushiHosaka/team-ai-connectors)を開きます。
+
+READMEとファイル一覧が見えたら、この手順は完了です。`404`や`Repository not found`が出たときは、招待を承認したか、別のアカウントでログインしていないかを確認します。
+
+メンターは、リポジトリの`Settings → Collaborators → Add people`から、生徒のユーザー名を指定して招待します。
+
+## 3. 使うAIのコースを選ぶ
+
+| やりたいこと・使う環境 | 進む先 |
+| --- | --- |
+| まずChatGPTのブラウザー画面でSlackを読みたい | [A. ChatGPTとSlackをつなぐ](#course-a) |
+| ChatGPTのアカウントで開発用スキルを使いたい | [B. Codexにチームスキルを入れる](#course-b) |
+| Claudeのブラウザー画面でスキルを使いたい | [C. ClaudeにZIPを追加する](#course-c) |
+| Claude Codeで開発スキルを使いたい | [D. Claude Codeにチームスキルを入れる](#course-d) |
+
+Aはサービスへの接続、B〜Dはチームのスキルを使うための手順です。ブラウザー版のChatGPTで、非公開リポジトリのスキルが自動で使えるとは限りません。チームのSDDスキルを使う場合はB、または利用条件を満たすC・Dへ進みます。
+
+個人向けClaudeは18歳以上が対象です。C・Dは条件を満たす人だけ進めてください。[Claudeの利用条件](https://www.anthropic.com/legal/consumer-terms)
+
+<a id="course-a"></a>
+## A. ChatGPTとSlackをつなぐ
+
+このコースは、ブラウザーの画面で操作します。ターミナルへの入力は不要です。
+
+1. ChatGPTで`Plugins`を開き、`Slack`を探します。
+2. インストールを選び、`Connect`などの接続ボタンを押します。
+3. 自分のSlackアカウントでログインし、チームのワークスペースを選びます。
+4. 許可する操作を確認し、接続を進めます。管理者の承認が必要と表示されたらメンターに伝えます。
+5. ChatGPTで新しいチャットを開き、次のように頼みます。
+
+```text
+Slackの接続を使って、#案内チャンネルの最新の投稿を探してください。
+投稿の内容と、元の投稿へのリンクを返してください。投稿や返信はしないでください。
+```
+
+`#案内チャンネル`は、メンターから案内された実際のチャンネル名に置き換えます。返ってきたリンクを開き、内容が一致していれば接続の確認は完了です。
+
+Slack自体の参加方法と利用条件は、メンターの案内に従ってください。接続ボタンがない場合は、画面やプランによる違いがあるため、表示されている内容をメンターに伝えます。[ChatGPTの公式プラグイン案内](https://learn.chatgpt.com/docs/plugins)
+
+<a id="course-b"></a>
+## B. Codexにチームスキルを入れる
+
+Codexは、ファイルを読み、編集やコマンド実行をしながら開発を手伝うAIです。この手順では、文字で操作するCodex CLIを使います。
+
+### B-1. 必要なアプリを用意する
+
+次の公式案内から、自分のOSに合う方法で導入します。既に使えるものは再導入しません。初めてのインストールはメンターと一緒に進めてください。
+
+| 用意するもの | 何に使うか | 公式案内 |
+| --- | --- | --- |
+| Git | 教材を取得し、変更の履歴を扱う | [Gitの設定](https://docs.github.com/en/get-started/git-basics/set-up-git) |
+| GitHub CLI | GitHubへのログインと非公開教材の取得 | [GitHub CLI](https://cli.github.com/) |
+| Codex CLI | 開発用AIを起動し、スキルを使う | [Codex CLIの導入](https://learn.chatgpt.com/docs/cli#getting-started) |
+
+Macは「ターミナル」、Windowsは「PowerShell」を開きます。ターミナルは、コマンドを文字で入力してPCを操作するアプリです。以下では、コード欄の内容を1行ずつ入力し、その都度Enterを押します。コード欄を囲む記号は入力しません。
+
+ターミナルで次を実行し、それぞれのバージョンが表示されるか確認します。
+
+```sh
+git --version
+gh --version
+codex --version
+```
+
+`command not found`や「認識されません」が出たアプリは、導入を確認してターミナルを開き直します。
+
+### B-2. GitHubにログインして教材を取得する
+
+まず、保存先の作業用フォルダーをメンターと決めます。Macではターミナルに`cd `と入力し、末尾の半角スペースを残したままFinderの保存先フォルダーをドラッグして、Enterを押します。Windowsではエクスプローラーで保存先を開き、アドレスバーに`powershell`と入力してEnterを押すと、その場所でPowerShellを開けます。
+
+ターミナルで、次を1行ずつ実行します。
 
 ```sh
 gh auth login
@@ -17,162 +100,120 @@ gh repo clone AtsushiHosaka/team-ai-connectors
 cd team-ai-connectors
 ```
 
-Choose GitHub.com and complete the browser sign-in. Keep this checkout and reuse it; you do not need separate clones for different AI clients.
+ログインの質問では`GitHub.com`を選び、ブラウザーで自分のアカウントにログインします。ログイン方法を聞かれたら、ブラウザーで認証する方法を選べます。画面に表示された案内に従ってください。
 
-If cloning reports that the repository cannot be found, check the accepted invitation and the account shown by `gh auth status` before trying again.
+`clone`は教材をPCに取得する操作、`cd`は作業するフォルダーを移動する操作です。成功すると、選んだ保存場所の中に`team-ai-connectors`フォルダーができます。
 
-## 2. Install the skills in your client
+ターミナルで`pwd`を入力すると、現在の場所を確認できます。末尾が`team-ai-connectors`になっていれば、次へ進みます。既に取得済みなら、そのフォルダーを開き直し、`clone`は繰り返しません。
 
-### Codex
+### B-3. チームスキルをインストールする
 
-If you have only used ChatGPT in a browser, first follow the [official Codex CLI installation guide](https://learn.chatgpt.com/docs/cli#getting-started) for your operating system and sign in. Then continue below.
-
-From the repository directory:
+取得した`team-ai-connectors`フォルダーで、ターミナルに次を入力します。
 
 ```sh
 codex plugin marketplace add .
+codex plugin add team-workflows@team-ai-connectors
 codex
 ```
 
-At the Codex prompt, enter `/plugins`. Choose `team-ai-connectors` and install `team-workflows`. Start a new session, then try:
+1行目の最後の`.`も必要です。「今開いているフォルダーにあるスキルの一覧を登録する」という意味です。2行目でチームスキルを入れ、3行目でCodexを起動します。
+
+初めて起動したときは、画面の案内に従ってChatGPTのアカウントでログインします。既にセッションを開いていた場合は、新しいセッションから使います。
+
+`plugin add`が認識されない場合は、Codexを公式手順で更新するか、Codexの入力欄で`/plugins`を開き、`team-ai-connectors`から`team-workflows`を選んでインストールします。
+
+### B-4. 日本語で初期設定を頼む
+
+ここからは、起動したCodexのAI入力欄に送ります。
 
 ```text
-Use sdd-lite to turn this feature into a small, testable task: [your idea].
+初期設定をしてください。今の環境を確認して、
+natural-japaneseも導入し、日本語の文章を見直せるか確かめてください。
 ```
 
-The same checkout also supports `codex plugin marketplace add AtsushiHosaka/team-ai-connectors` after private Git access is configured. Choose one registration route. The [official guide](https://learn.chatgpt.com/docs/plugins) describes the plugin browser; [marketplace setup](https://developers.openai.com/plugins/build/plugins) covers repository and local sources.
+AIが`setup`スキルを使って進めます。スキルを明示したい場合は、同じ入力欄で`$setup`と入力するか、スキル一覧の「初期設定」を選びます。説明や表示名は日本語です。
 
-### Optional Claude Code
+最後に、次の依頼を試します。
 
-Consumer Claude requires users to be 18 or older. Members under 18 should use an eligible alternative rather than this optional path. See [Claude's consumer terms](https://www.anthropic.com/legal/consumer-terms).
+```text
+ふりかえりをしてください。今日はGitHubのアカウントを作り、
+チームスキルを入れました。困ったことと、次に試したいことを一緒に整理してください。
+```
 
-Install Claude Code using its [official setup guide](https://code.claude.com/docs/en/setup) if the `claude` command is not already available.
+必要に応じて`$reflection`と明示します。日本語で確認の質問や整理が返り、次に試すことを決められたら、スキルの導入確認は完了です。
 
-Start Claude Code from this repository directory with `claude`, then enter:
+<a id="course-c"></a>
+## C. ClaudeにZIPを追加する
+
+このコースは、カスタムスキルに対応するClaudeのブラウザー画面で進めます。18歳以上で、利用条件を満たす人向けです。
+
+1. GitHubにログインした状態で、[チームの最新リリース](https://github.com/AtsushiHosaka/team-ai-connectors/releases/latest)を開きます。
+2. 使いたいスキルのZIPをダウンロードします。最初は`reflection.zip`で試せます。
+3. Claudeの`Customize → Skills`を開き、ZIPを追加して有効にします。
+4. 新しいチャットで「ふりかえりをして」と日本語で頼みます。
+
+ZIPはそのままアップロードします。接続先へのログインや、文章検査用ツールの準備は別の確認です。ブラウザーの実行環境でローカルPCと同じコマンドを使えるとは限りません。`natural-japanese`を追加する場合は、[配布元のリリース](https://github.com/coji/natural-japanese/releases)と現在の導入案内を確認します。[Claudeの公式スキル案内](https://support.claude.com/en/articles/12512180-use-skills-in-claude)
+
+<a id="course-d"></a>
+## D. Claude Codeにチームスキルを入れる
+
+18歳以上で、利用条件を満たす人向けです。[Claude Codeの公式導入案内](https://code.claude.com/docs/en/setup)から`claude`コマンドを使える状態にします。
+
+[B-1](#b-1-必要なアプリを用意する)のGit・GitHub CLIと、[B-2](#b-2-githubにログインして教材を取得する)の教材取得を済ませます。同じフォルダーを使い回し、Codexはこのコースでは導入不要です。
+
+ターミナルで、取得済みの`team-ai-connectors`フォルダーを開いて起動します。
+
+```sh
+claude
+```
+
+次の2行は、起動後のClaude Codeの入力欄に入れます。
 
 ```text
 /plugin marketplace add .
 /plugin install team-workflows@team-ai-connectors
 ```
 
-Start a new session after installation. You can also add `AtsushiHosaka/team-ai-connectors` instead of `.` after private Git authentication is configured. See [Claude Code marketplaces](https://code.claude.com/docs/en/plugin-marketplaces).
-
-For a Claude interface that supports custom skill uploads, create the individual skill ZIP files with:
-
-```sh
-python3 scripts/package_skills.py --output dist
-```
-
-Upload the relevant generated ZIP through that interface's skill settings. A skill ZIP contains instructions; it does not authenticate connectors. Feature availability depends on the account and client.
-
-### ChatGPT on the web
-
-Connect supported services through ChatGPT's native Plugins interface as described below. A GitHub repository is a distribution source for this project's local clients; having repository access does not automatically install these skills into a web chat. Check the [current supported surfaces](https://learn.chatgpt.com/docs/plugins) before choosing an installation route.
-
-## 3. Connect Slack with your own account
-
-**ChatGPT:** open **Plugins**, find **Slack**, install it, and complete **Connect** when prompted. Select the intended workspace and review the requested permissions. Then start a new chat. The [official plugin guide](https://learn.chatgpt.com/docs/plugins) lists Slack as a supported native plugin.
-
-**Claude:** open its connectors settings, select Slack, and complete its browser authorization flow. See [Claude connectors](https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities). Claude Code can also use supported connectors already connected to the same Claude account; inspect `/mcp` to check availability. See [Claude Code connector reuse](https://code.claude.com/docs/en/mcp#use-mcp-servers-from-claudeai).
-
-Each member signs in individually. Account, workspace, and administrator restrictions can affect availability; installing the shared skills does not bypass them.
-
-First ask for a read-only check against a channel you can access:
+新しいセッションを開き、初期設定を頼みます。
 
 ```text
-Use the Slack connection to find the latest message in #your-channel.
-Return its link. Do not send a message.
+/team-workflows:初期設定 natural-japaneseも導入して、日本語の文章を見直せるか確認してください。
 ```
 
-Only treat the connection as working after the client returns a real accessible message. If no Slack tool is available, inspect the client's connection status rather than assuming a new bot or script is needed.
-
-## 4. Add optional development connectors
-
-Python 3.11 or later is needed for the repository helpers and local tests. On Windows, use `py -3` in place of `python3` if that is your installed Python command. List the available connector definitions:
-
-```sh
-python3 scripts/configure.py list
-```
-
-The optional `notion` and `atlassian` marketplace plugins provide their corresponding MCP connection setup. Install them through the same plugin browser only when you need them, then authenticate when prompted. In Claude Code, the install commands are:
+ふりかえりは、次のように呼び出せます。
 
 ```text
-/plugin install notion@team-ai-connectors
-/plugin install atlassian@team-ai-connectors
+/team-workflows:ふりかえり 今日の作業を一緒に整理してください。
 ```
 
-Alternatively, generate configuration snippets for the client you use:
+`team-workflows:`はプラグイン名です。Codexでは同じ形式のコマンドを使う必要はありません。日本語の文章で依頼する方法は、どちらのクライアントでも使えます。
 
-```sh
-python3 scripts/configure.py export --client codex --connectors notion github
-python3 scripts/configure.py export --client claude-code --connectors notion github
-python3 scripts/configure.py export --client vscode --connectors notion github atlassian
-```
+## 4. 日本語で開発を進める
 
-Choose the relevant command; you do not need all three. Without `--output`, the result appears in the terminal. To save a new snippet file:
+導入後は、AIの入力欄で次のように頼みます。
 
-```sh
-python3 scripts/configure.py export --client codex --connectors notion github --output codex-connectors.toml
-```
-
-The exporter rejects an existing output file. It does not edit your client configuration. Merge the generated server entries into your existing configuration, preserving other settings:
-
-| Client | Typical configuration | Section to merge |
+| 段階 | 依頼の例 | 確認すること |
 | --- | --- | --- |
-| Codex | `~/.codex/config.toml` | `mcp_servers` tables |
-| Claude Code | Project `.mcp.json` | `mcpServers` entries |
-| VS Code | Project `.vscode/mcp.json` | `servers` entries |
+| 仕様を詰める | 作りたいものの仕様を詰めて。決める必要があることを質問して | 要求、設計、タスクと完成条件が分かる |
+| 実装する | 合意した仕様に沿って実装を進めて | 変更内容と、実行した確認が分かる |
+| 検証する | 仕様どおりに動くか、根拠を付けて検証して | 合格した項目、問題、未確認の項目が分かる |
+| 実際に使う | 初めて使う人として操作し、迷うところやバグを調べて | 実際の操作と、再現する手順が残る |
+| ふりかえる | 今日の作業をふりかえって、次に試すことを決めたい | 経験と根拠に基づく次の行動が決まる |
 
-Choose either the plugin or the exported configuration for the same connector to avoid duplicate connections. Do not replace a whole configuration file with a snippet or put secret values in a committed file.
+AIが実行したと説明した確認は、実際のテスト結果や画面も見て確かめます。未確認の項目は、そのまま未確認として残します。
 
-### Authenticate the connectors
+Notion・GitHubへの接続、Slack通知、更新方法は[追加設定ガイド](advanced-setup.md)にあります。必要になった項目だけ進めてください。
 
-**GitHub:** create a token with access only to the repositories and read operations you need. Set and export `GITHUB_MCP_TOKEN` in the environment before launching the AI client. The generated configuration refers to that variable; it does not contain a token, and a local `.env` file is not loaded automatically. A GUI client launched separately may not inherit a terminal's environment.
+## 困ったときにメンターへ伝えること
 
-GitHub configuration requests read-only tools with the `X-MCP-Readonly: true` header. This is separate from `gh auth login`: authenticating the GitHub CLI does not populate `GITHUB_MCP_TOKEN`.
-
-**Notion and Atlassian:** complete the browser OAuth flow from your client's MCP or connection settings after adding the server. Select the intended account and content access. For the exported Codex configuration, use `codex mcp login team-notion` or `codex mcp login team-atlassian`; for a plugin connection, follow its sign-in prompt. In Claude Code, inspect `/mcp`.
-
-Verify each connection with one concrete read, such as reading this repository's README or finding a page you already have permission to open. Configuration generation alone does not prove authentication or live access.
-
-## 5. Use the skills on one small task
-
-1. Ask `sdd-lite` to define the outcome and acceptance criteria for a small change.
-2. Implement the change in your normal editor or AI development client.
-3. Ask `review-ready` to prepare a PR explanation using the actual diff and checks.
-4. Ask `reflection` what the evidence shows and which one experiment to try next.
-
-The skills respond in the language you use. They do not require a new planning system or publish work automatically.
-
-## Send an optional Slack update
-
-With a native Slack connector available, ask explicitly:
+次の形式で、どこまで進んだかを伝えると相談しやすくなります。
 
 ```text
-Use work-session to post a start update to #your-development-channel.
-My goal is [goal], and my first step is [step].
+使っているPC：Mac / Windows
+使っているAI：ChatGPTのブラウザー版 / Codex / Claude / Claude Code
+止まった場所：B-3の2行目
+表示された内容：ここにエラーメッセージを書く
+ここまでできたこと：招待を承認し、教材のフォルダーは取得できた
 ```
 
-The client needs a confirmed destination and actual send capability. Merely loading the skill, opening an editor, or reading a Slack message does not authorize a post.
-
-If you prefer a channel-specific incoming webhook, have the Slack workspace owner configure one and provide the secret through a secure channel. Set and export `SLACK_WEBHOOK_URL` locally. Its configured channel is the destination; the script does not select a different channel.
-
-Preview a payload without sending:
-
-```sh
-python3 scripts/slack_notify.py --event started --summary "Starting the search feature"
-```
-
-Send deliberately by adding `--send`:
-
-```sh
-python3 scripts/slack_notify.py --event completed --summary "Search feature checks passed" --link "https://github.com/AtsushiHosaka/team-ai-connectors" --send
-```
-
-Events are `started`, `blocked`, `review`, and `completed`. Use a link to the actual task or PR when available. The webhook helper sends updates; it does not let the AI read Slack. Do not paste the webhook URL into chat, code, or Git commits.
-
-## Update your checkout
-
-From the existing checkout, run `git pull --ff-only` when your working tree is ready to update. For locally registered plugins, follow the client's reload or new-session prompt. Repository-backed marketplace installations have their own refresh controls; Codex provides `codex plugin marketplace upgrade team-ai-connectors`.
-
-If a helper rejects an existing file, choose a fresh output filename and merge the result. If a service fails to connect, check the account, permissions, token environment, and connection status. Report the failed step and its error without sharing credentials.
+パスワード、認証トークン、Webhook URLは貼らないでください。相談のために画面を共有する場合も、秘密情報が映っていないか確認します。
